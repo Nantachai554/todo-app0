@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="auth">
+          <h1>To-Do List</h1>
+          <h2>สมัครสมาชิก</h2>
+          <input type="text" id="registerUsername" placeholder="Username">
+          <input type="password" id="registerPassword" placeholder="Password">
+          <button onclick="register()">สมัคร</button>
+          <h2>ล็อกอิน</h2>
+          <input type="text" id="loginUsername" placeholder="Username">
+          <input type="password" id="loginPassword" placeholder="Password">
+          <button onclick="login()">ล็อกอิน</button>
+        </div>
+        <div id="todo" style="display: none;">
+          <h1>Welcome, <span id="username"></span>!</h1>
+          <button onclick="logout()">Logout</button>
+          <h2>เพิ่มงาน</h2>
+          <input type="text" id="taskTitle" placeholder="Title">
+          <textarea id="taskDescription" placeholder="Description"></textarea>
+          <input type="date" id="taskDueDate">
+          <select id="taskCategory">
+            <option value="">เลือกหมวดหมู่</option>
+            <option value="งาน">งาน</option>
+            <option value="ส่วนตัว">ส่วนตัว</option>
+            <option value="ด่วน">ด่วน</option>
+          </select>
+          <button onclick="createTask()">เพิ่มงาน</button>
+          <h2>งานทั้งหมด</h2>
+          <div class="filters">
+            <select id="filterCategory" onchange="loadTasks()">
+              <option value="">ทุกหมวดหมู่</option>
+              <option value="งาน">งาน</option>
+              <option value="ส่วนตัว">ส่วนตัว</option>
+              <option value="ด่วน">ด่วน</option>
+            </select>
+            <select id="filterStatus" onchange="loadTasks()">
+              <option value="">ทุกสถานะ</option>
+              <option value="false">ยังไม่เสร็จ</option>
+              <option value="true">เสร็จแล้ว</option>
+            </select>
+          </div>
+          <ul id="taskList"></ul>
+        </div>
+        <div id="editModal" class="modal">
+          <div class="modal-content">
+            <span class="close">×</span>
+            <h2>แก้ไขงาน</h2>
+            <input type="text" id="editTitle" placeholder="Title">
+            <textarea id="editDescription" placeholder="Description"></textarea>
+            <input type="date" id="editDueDate">
+            <select id="editCategory">
+              <option value="">เลือกหมวดหมู่</option>
+              <option value="งาน">งาน</option>
+              <option value="ส่วนตัว">ส่วนตัว</option>
+              <option value="ด่วน">ด่วน</option>
+            </select>
+            <button onclick="saveEdit()">บันทึก</button>
+            <button onclick="cancelEdit()" class="cancel">ยกเลิก</button>
+          </div>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+      <script src="script.js"></script>
+
+</html>
